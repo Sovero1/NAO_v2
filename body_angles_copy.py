@@ -42,11 +42,13 @@ def angle_between(v1, v2):
 def get_right_shoulder_angles_ga_lvjj(joints):
     S = joints[JointType.RightShoulder]
     E = joints[JointType.RightElbow]
+    W = joints[JointType.RightWrist] 
     LS = joints[JointType.LeftShoulder]
     RS = joints[JointType.RightShoulder]
     SM = joints[JointType.SpineMid]
 
     v_upper = vector(S, E)
+    v_forearm = vector(E, W)
     v_shoulder_line = vector(LS, RS)
     v_torso_up = vector(SM, S)
 
@@ -134,7 +136,7 @@ def getBodyAngles(data):
         "LShoulderPitch": clamp_deg(lsp, -119.5, 119.5),
         "LShoulderRoll":  clamp_deg(lsr, -76.0, 18.0),
         #"LElbowRoll":     clamp_deg( 2.0, 88.5)
-        "RightHandOpen": right_hand_open,
-        "LeftHandOpen": left_hand_open
+        "LHand": 1 if data.handState["LEFT_HAND"] else 0,
+        "RHand": 1 if data.handState["RIGHT_HAND"] else 0,
     }
     return angles

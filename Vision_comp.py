@@ -69,7 +69,7 @@ sock.connect(("127.0.0.1", 6000))  # IP del servidor NAO/controlador
 # Inicialización
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture("prueba2.mp4")
 smoother = AngleSmoother(alpha=0.2)
 start_time = time.time()
 session_data=[]
